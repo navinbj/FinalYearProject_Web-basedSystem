@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="css/bootstrap-3.3.2-dist/css/bootstrap.min.js"></script>
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/style2.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+</head>
+<body role="document">
+    <form id="form1" runat="server">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Default.aspx">Exam Management System</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+          <%if (Session["adminUsername"] != null)
+              {%>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add/Show Exams <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a href="addExams.aspx">Add Exams</a></li>
+                  <li><a href="displayExams.aspx">Show Exams</a></li>                 
+              </ul>
+              <li><a href="viewAllStudents.aspx">View Students</a></li>
+          </li>
+          <%}
+              else if (Session["username"] != null)
+              {%>
+          <li><a href="displayExams.aspx">Show All Exams</a></li>
+          <%}%>
+
+          <% if (Session["username"] != null)
+              { %>
+          <li class=""><a href="myExams.aspx">My Exams</a></li>
+          <li><a href="gradeEstimator.aspx">Grade Estimator</a></li>
+          <%} %>
+          <li><a href="contactUs.aspx">Contact Us</a></li>
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+          <% if (Session["username"] == null && Session["adminUsername"] == null)
+              { %>
+                <li><a href="login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+             <% }
+                 else if(Session["adminUsername"] == null)
+                 {
+                     String user = Session["username"].ToString();
+             %>
+                <li><a href="myAccount.aspx"><span class="glyphicon glyphicon-user"></span> <%=user%></a></li>
+                <li><a href="logout.aspx"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+             <% }
+                 else if(Session["username"] == null)
+                 {
+             %>
+                    <li><a href="addStudent.aspx"><span class="glyphicon glyphicon-user"></span> Add Student</a></li>
+                    <li><a href="logout.aspx"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            
+             <%  } %>
+              
+      </ul>
+    </div>
+ </div>
+</div>
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+
+    <div id="footer" class="col-xs-12">
+        <p><i>MVC design pattern | Bootstrap CSS framework | ©2016 by Navin Bajgai | All Rights Reserved</i></p>
+    </div>
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

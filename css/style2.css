@@ -1,0 +1,27 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 30px;
+    background-color: aliceblue;
+    top: auto;
+}
+
+.theme-dropdown .dropdown-menu {
+    position: static;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+    margin: 5px 0;
+}
+
+#calcContent {
+    padding-left: 25px;
+}
+
+#footer {
+    text-align: center;
+    background-color: #a94442;
+    color: #fff;
+    margin-top: 5px;
+}
