@@ -19,7 +19,7 @@ public class Mail
         smtpServer = "smtp.gmail.com";      //smtp server to be passed in the initialisation of smtp client class.
         smtpPort = 587;     //smtp port to be passed in the initialisation of smtp client class.
         smtpUsername = "studentsservice.unisalford";
-        smtpPassword = "s@lf0rd2019";
+        smtpPassword = "";
     }
 
     //method for sending email to people, mainly customers when specified the mail requirements like sender, reciever, subject and body in the parameter.
